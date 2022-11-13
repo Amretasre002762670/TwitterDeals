@@ -26,7 +26,7 @@ CREATE DATABASE twitterdeals
 
 
 **User Table**
-
+```sql
 CREATE TABLE twitter_users(
     user_id BIGINT(20),
     user_name TEXT,
@@ -38,9 +38,10 @@ CREATE TABLE twitter_users(
     tweet_id BIGINT(20),
     PRIMARY KEY  (user_id )
 );
-
+```
 **Walmart Tweets Table**
-
+```sql
+```
 CREATE TABLE walmart_tweets(
     tweet_id BIGINT(20),
     tweet_text TEXT,
@@ -53,7 +54,8 @@ CREATE TABLE walmart_tweets(
 );
 
 **Walmart Tweet URL table**
-
+```sql
+```
 CREATE TABLE walmart_tweet_url(
     tweet_id BIGINT(20),
     tweet_url TEXT,
@@ -61,21 +63,24 @@ CREATE TABLE walmart_tweet_url(
 
 
 **Walmart tweet mention table**
-
+```sql
+```
 CREATE TABLE walmart_tweet_mentions(
     tweet_id BIGINT(20),
     source_user TEXT,
 );
 
 **Walmart tweet tag table**
-
+```sql
+```
 CREATE TABLE walmart_tweet_tag(
     tweet_id BIGINT(20),
     tags TEXT,
 );
 
 **Target Tweets Table**
-
+```sql
+```
 CREATE TABLE target_tweets(
     tweet_id BIGINT(20),
     tweet_text TEXT,
@@ -89,7 +94,8 @@ CREATE TABLE target_tweets(
 );
 
 **Target Tweet URL table**
-
+```sql
+```
 CREATE TABLE target_tweet_url(
     tweet_id BIGINT(20),
     tweet_url TEXT,
@@ -97,21 +103,24 @@ CREATE TABLE target_tweet_url(
 
 
 **Target tweet mention table**
-
+```sql
+```
 CREATE TABLE target_tweet_mentions(
     tweet_id BIGINT(20),
     source_user TEXT,
 );
 
 **Target tweet tag table**
-
+```sql
+```
 CREATE TABLE target_tweet_tag(
     tweet_id BIGINT(20),
     tags TEXT,
 );
 
 **SamsClub Tweet Table**
-
+```sql
+```
 CREATE TABLE samsclub_tweets(
     tweet_id BIGINT(20),
     tweet_text TEXT,
@@ -124,21 +133,24 @@ CREATE TABLE samsclub_tweets(
 );
 
 **SamsClub Tweet url table**
-
+```sql
+```
 CREATE TABLE samsclub_tweet_url(
     tweet_id BIGINT(20),
     tweet_url TEXT,
 );
 
 **SamsClub tweet mention table**
-
+```sql
+```
 CREATE TABLE samsclub_tweet_mentions(
     tweet_id BIGINT(20),
     source_user TEXT,
 );
 
 **SamsClub tweet tag table**
-
+```sql
+```
 CREATE TABLE samsclub_tweet_tag(
     tweet_id BIGINT(20),
     tags TEXT,
@@ -146,56 +158,71 @@ CREATE TABLE samsclub_tweet_tag(
 
 **2. Queries to Add Constraints to the Tables:**
 
-**Adding the Primary Keys:**
-
+**Adding Primary Keys:**
+```sql
+```
 ALTER TABLE twitterdeals.walmart_tweets ADD PRIMARY KEY(tweet_id); 
 ALTER TABLE target_tweets ADD PRIMARY KEY(tweet_id);
 ALTER TABLE samsclub_tweets ADD PRIMARY KEY(tweet_id);
 
-**Adding the Foreign Keys:**
-
+**Adding Foreign Keys:**
+```sql
+```
 ALTER TABLE twitterdeals.walmart_tweets ADD CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES twitterdeals.twitter_users(user_id) ON DELETE NO ACTION ON UPDATE NO ACTION; 
-
+```sql
+```
 ALTER TABLE twitterdeals.walmart_tweet_tag ADD CONSTRAINT tweet_id_fk FOREIGN KEY (tweet_id) REFERENCES twitterdeals.walmart_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
+```sql
+```
 ALTER TABLE twitterdeals.walmart_tweet_mentions ADD CONSTRAINT tweet_id_fk2 FOREIGN KEY (tweet_id) REFERENCES twitterdeals.walmart_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
+```sql
+```
 ALTER TABLE twitterdeals.walmart_tweet_url ADD CONSTRAINT tweet_id_fk3 FOREIGN KEY (tweet_id) REFERENCES twitterdeals.walmart_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
+```sql
+```
 ALTER TABLE target_tweets ADD CONSTRAINT user_id_fk2 FOREIGN KEY (user_id) REFERENCES twitter_users(user_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
+```sql
+```
 ALTER TABLE target_tweet_tag ADD CONSTRAINT tweet_id_fk4 FOREIGN KEY (tweet_id) REFERENCES target_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;        
-
+```sql
+```
 ALTER TABLE target_tweet_mentions ADD CONSTRAINT tweet_id_fk5 FOREIGN KEY (tweet_id) REFERENCES target_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;   
-
+```sql
+```
 ALTER TABLE target_tweet_url ADD CONSTRAINT tweet_id_fk6 FOREIGN KEY (tweet_id) REFERENCES target_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
+```sql
+```
 ALTER TABLE samsclub_tweets ADD CONSTRAINT user_id_fk3 FOREIGN KEY (user_id) REFERENCES twitter_users(user_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
+```sql
+```
 ALTER TABLE samsclub_tweet_tag ADD CONSTRAINT tweet_id_fk7 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
+```sql
+```
 ALTER TABLE samsclub_tweet_mentions ADD CONSTRAINT tweet_id_fk8 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
+```sql
+```
 ALTER TABLE samsclub_tweet_url ADD CONSTRAINT tweet_id_fk9 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 
 **Use Cases with SQL Queries and Relational Algebra Depiction:**
 
-**1. Use Case:** Get all the users who have tweeted regarding Walmart Deals.
-Description: View all the Twitter users who have tweeted regarding Walmart Black Friday Deals.
+**1. Use Case:** Get all the users who have tweeted regarding Walmart Deals
+Description: View all the Twitter users who have tweeted regarding Walmart Black Friday Deals
 Actor: Walmart Admin
-Precondition: The user must have a Twitter account.
+Precondition: The user must have a Twitter account
 Steps:
-Actor action: Search for tags such as #BlackFriday #Walmart.
+Actor action: Search for tags such as #BlackFriday #Walmart
 System Responses: Retrieves all the tweets that match the tags used. Get the user name who has tweeted the tweets. The use case ends.
 Post Condition: Users retrieved successfully.
-Alternate Path: Searches with wrong hashtags and keywords.
+Alternate Path: Searches with wrong hashtags and keywords
 Error: Gets incorrect and irrelevant tweets.
 
 **Relational Algebra Equation:**
 σt.user_id=u.user_id(Πt.tweet_id, t.user_id, u.user_name) (walmart_tweets t, twitter_users u))
 
 **SQL Query:**
+```sql
+```
 SELECT t.tweet_id, t.user_id, u.user_name
 FROM Walmart_tweets t, twitter_users u
 WHERE t.user_id = u.user_id;
@@ -215,6 +242,8 @@ Error: Gets no URLs mentioned in tweets.
 (Πtweet_url (walmart_tweets))
 
 **SQL Query:**
+```sql
+```
 SELECT tweet_url
 FROM Walmart_tweet_url;
 
@@ -234,6 +263,8 @@ Error: Get no tweets for the given hashtags.
 𝜎t.user_id=u.user_id(Π.user_name, t.tweet_text (walmart_tweets t, twitter_users u))
 
 **SQL Query:**
+```sql
+```
 SELECT u.user_name, t.tweet_text
 FROM twitter_users u, walmart_tweets t
 WHERE t.user_id = u.user_id;
@@ -252,6 +283,8 @@ Error: Get no tweets that were made within the present day.
 
 
 **SQL Query:**
+```sql
+```
 SELECT tweet_text, created_at
 FROM walmart_tweets
 ORDER BY created_at DESC
@@ -268,16 +301,20 @@ Alternate Path: Not adding hashtags and keywords.
 Error: Will not appear when another user searches with keywords.
 
 **SQL Query:**
-
+```sql
 INSERT INTO Walmart_tweets (tweet_id, tweet_text, favorite_count, retweet_count, tweet, user_id)
 VALUES (458796966949029616, “Good Phone Deals in Walmart for this Thanks Giving #DealsForDays.😉”, “2022-11-11 00:47:26+00:00”, 0, 0, “Walmart#DealsForDays”, 1579936718937006082);
 
+```
 
+```sql
 INSERT INTO twitter_users (tweet_id, user_id, user_name, follower_count,
 friend_count, user_profile_image, user_created_at)
 VALUES (458796966949029616, 1579936718937006082, “Amretasre_RT_15”, 0, 0, “https://pbs.twimg.com/profile_images/1579936822460833798/HQg--2xw_400x400.jpg”,  2022-10-11 00:47:26+00:00 )
 
-**6. Use case:** View the products having discounts in Sam’s Club 
+```
+
+** 6. Use case:** View the products having discounts in Sam’s Club 
 Description: The system must be able to display all products having having discounts in Sam’s Club
 Actors: User
 Precondition: Every tweet should be unique
@@ -291,6 +328,7 @@ Error: There are no discounts
 σt.user_id=u.user_id(Π.user_name, t.tweet_text (samsclub_tweets t, twitter_users u))
 
 **SQL QUERY**
+```sql
 SELECT 
     u.user_name, t.tweet_text
 FROM
@@ -298,6 +336,8 @@ FROM
     twitterdeals.samsclub_tweets t
 WHERE
     t.user_id = u.user_id;
+
+```
 
 
 **7. Use Case:** Display hashtags for Deals in Target 
@@ -314,10 +354,13 @@ Error: There are no deals
 (Πtags (target_tweets))
 
 **SQL QUERY:**
+```sql
 SELECT 
     tags
 FROM
     twitterdeals.target_tweet_tag;
+
+```
 
  **8.	Use Case:** List all users having followers more than 10k
 Description: Displays the list of users having more than 10k followers
@@ -334,12 +377,15 @@ Error: No user has more than 10k followers
 σ follower_count>10000 (∏COUNT(user_id)(twitter_users))
 
 **SQL QUERY**
+```sql
 SELECT 
     COUNT(user_id)
 FROM
     twitterdeals.twitter_users
 WHERE
     follower_count > 10000;
+
+```
 
 
 **9. Use Case:** View all the URLs of the tweets
@@ -357,12 +403,14 @@ Error: No URL found
  (∏w.tweet_url,t.tweet_url,s.tweet_url(walmart_tweets w, target_tweets t, samsclub_tweets s))
 
 **SQL Query**
+```sql
 SELECT DISTINCT
     w.tweet_url, t.tweet_url, s.tweet_url
 FROM
     twitterdeals.walmart_tweet_url w,
     twitterdeals.target_tweet_url t,
     twitterdeals.samsclub_tweet_url s;
+```
 
 **10. Use Case:** Show the URL of the tweet having BlackFriday
 Description: Displays the URL of the tweet having BlackFriday
@@ -380,9 +428,12 @@ Error: Nor URL found
 target_tweets t, samsclub_tweets s)))
 
 **SQL Query:**
+```sql
 SELECT distinct w.tweet_url, t.tweet_url, s.tweet_url
 FROM walmart_tweet_url w, target_tweet_url t,samsclub_tweet_url s
 WHERE w.tweet_url LIKE '%BlackFriday%' OR t.tweet_url LIKE '%BlackFriday%' OR  s.tweet_url LIKE '%BlackFriday%' ;
+
+```
 
 **11. Use Case:** Count total number of users having retweets more than 10 for Target
 Description: Displays the number users with retweets more than 10
@@ -400,9 +451,12 @@ Error: There were no tweets
 
 
 **SQL Query:**
+```sql
 SELECT COUNT(user_id)
 FROM twitterdeals.target_tweets
 WHERE retweet_count > 10;
+
+```
 
 **12.Use Case:** View all the users mentioned in tweets related to Samsclub
 Description: Displays the list of users who are mentioned in tweets related to Walmart
@@ -419,8 +473,11 @@ Error: There were no
 ΠDISTINCT source_user  (twitterdeals.target_tweets))
 
 **SQL Query:**
+```sql
 SELECT DISTINCT source_user 
 FROM twitterdeals.samsclub_tweet_mentions;
+
+```
 
 **13. Use Case:** Display a list of tweets in Target that have likes more than 50
 Description: Tweets having likes more than 50
@@ -437,9 +494,12 @@ Error: There were no tweets
 𝛔favorite_count > 50 (Πtweet_text (twitterdeals.walmart_tweets))
 
 **SQL Query:**
+```sql
 SELECT tweet_text 
 FROM twitterdeals.walmart_tweets
 WHERE favorite_count > 50;
+
+```
 
 
 **14. UseCase:** View the tweet related to the #Deals #Target by user having user_id '4161180381'
@@ -457,9 +517,12 @@ Alternate path: User having user_id  '4161180381' has not tweeted anything relat
 
 
 **SQL Query:** 
+```sql
 SELECT t.tweet_text, t.created_at, tw.tweet_url
 FROM twitterdeals.target_tweets t, twitterdeals.target_tweet_url tw
 WHERE t.tweet_id=tw.tweet_id and t.user_id = 4161180381;
+
+```
 
 **15. Use case:**  View all the tweets posted last 24 hours on SamsClub
 Description: Displays the tweets posted on SamsClub in the last 24 hours
@@ -476,9 +539,12 @@ Error: No tweet found
 𝛔 tweet_date = CURDATE()(Π tweet_text(twitterdeals.samsclub_tweets)
 
  **SQL query:**
+ ```sql
 SELECT tweet_text
 FROM twitterdeals.samsclub_tweets
 where tweet_date = CURDATE();
+
+```
 
 **16.Use Case:** Count the number of users tweeted on the date 10 Nov 2022 for all 3 merchants
 Description: Displays the count of users who tweeted on 10 Nov 2022
@@ -495,9 +561,12 @@ Error: No tweets on 10 Nov 2022
 𝛔 t.created_at=CURDATE() AND w.created_at=CURDATE() AND s.created_at=CURDATE()(Π COUNT(t.user_id), COUNT(w.user_id), COUNT(s.user_id)(target_tweets t, walmart_tweets w,samsclub_tweets s)
 
 **SQL QUERY:**
+```sql
 SELECT COUNT(t.user_id) as table1Count, COUNT(w.user_id) as table2Count, COUNT(s.user_id) as table3Count
 FROM target_tweets t, walmart_tweets w,samsclub_tweets s
 WHERE t.created_at=CURDATE() AND w.created_at=CURDATE() AND s.created_at=CURDATE();
+
+```
 
 **17.Use Case:**	View all the tweets related to SamsClub and Target
 Description: Displays all the tweets related to SamsClub and Target
@@ -514,9 +583,12 @@ Error: Tweets not found
 (Π * (twitterdeals.samsclub_tweets)) ∪ (Π * (twitterdeals.target_tweets))
 
 **SQL Query:** 
+```sql
 SELECT * FROM twitterdeals.samsclub_tweets
 UNION
 SELECT * FROM twitterdeals.target_tweets;
+
+```
 
 
 **18. UseCase:**  Display all the tweets from 5 November 2022 to 10 November 2022 for SamsClub
@@ -533,9 +605,12 @@ Error: There are no tweets.
 𝛔tweet_date between 2022-11-09 and 2022-11-11(Π(twitterdeals.samsclub_tweets)
 
 **SQl Query:**
+```sql
 SELECT * 
 FROM twitterdeals.samsclub_tweets
 WHERE tweet_date between 2022-11-09 and 2022-11-11;
+
+```
 
 **19. Use Case:** Tweet regarding the discounts and deals on groceries in SamsClub.
 Description: The user tweets regarding the discounts offered by SamsClub.for groceries
@@ -548,8 +623,10 @@ Alternate Path: Not adding hashtags and keywords.
 Error: Will not appear when another user searches with keywords.
 
 **SQL Query:**
+```sql
 INSERT INTO SamsClub_tweets (tweet_id, tweet_text, favorite_count, retweet_count, tweet, user_id)
 VALUES (12312239669900775349, “Fresh Fruits and Vegetables Special Thanksgiving Discount on min 5lbs”, #Discount.”, “2022-11-12 00:24:41+00:00”, 0, 0, “Target#20%OFF#Discount#Deals”, 2313458937445567);
+```
 
 
 INSERT INTO twitter_users (tweet_id, user_id, user_name, follower_count,
@@ -574,9 +651,12 @@ Error: Tweets not found
 
 
 **SQL Query-** 
+```sql
 SELECT st.tags, st.tweet_id
 FROM
     twitterdeals.samsclub_tweet_tag st, 
     twitterdeals.samsclub_tweets s
 WHERE
     st.tweet_id = s.tweet_id AND s.tweet_date = 2022-11-06;
+```
+
