@@ -146,13 +146,13 @@ CREATE TABLE samsclub_tweet_tag(
 
 **2. Queries to Add Constraints to the Tables:**
 
-**Adding Primary Keys:**
+**Adding the Primary Keys:**
 
 ALTER TABLE twitterdeals.walmart_tweets ADD PRIMARY KEY(tweet_id); 
 ALTER TABLE target_tweets ADD PRIMARY KEY(tweet_id);
 ALTER TABLE samsclub_tweets ADD PRIMARY KEY(tweet_id);
 
-**Adding Foreign Keys:**
+**Adding the Foreign Keys:**
 
 ALTER TABLE twitterdeals.walmart_tweets ADD CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES twitterdeals.twitter_users(user_id) ON DELETE NO ACTION ON UPDATE NO ACTION; 
 
@@ -181,15 +181,15 @@ ALTER TABLE samsclub_tweet_url ADD CONSTRAINT tweet_id_fk9 FOREIGN KEY (tweet_id
 
 **Use Cases with SQL Queries and Relational Algebra Depiction:**
 
-**1. Use Case:** Get all the users who have tweeted regarding Walmart Deals
-Description: View all the Twitter users who have tweeted regarding Walmart Black Friday Deals
+**1. Use Case:** Get all the users who have tweeted regarding Walmart Deals.
+Description: View all the Twitter users who have tweeted regarding Walmart Black Friday Deals.
 Actor: Walmart Admin
-Precondition: The user must have a Twitter account
+Precondition: The user must have a Twitter account.
 Steps:
-Actor action: Search for tags such as #BlackFriday #Walmart
+Actor action: Search for tags such as #BlackFriday #Walmart.
 System Responses: Retrieves all the tweets that match the tags used. Get the user name who has tweeted the tweets. The use case ends.
 Post Condition: Users retrieved successfully.
-Alternate Path: Searches with wrong hashtags and keywords
+Alternate Path: Searches with wrong hashtags and keywords.
 Error: Gets incorrect and irrelevant tweets.
 
 **Relational Algebra Equation:**
@@ -277,7 +277,7 @@ INSERT INTO twitter_users (tweet_id, user_id, user_name, follower_count,
 friend_count, user_profile_image, user_created_at)
 VALUES (458796966949029616, 1579936718937006082, “Amretasre_RT_15”, 0, 0, “https://pbs.twimg.com/profile_images/1579936822460833798/HQg--2xw_400x400.jpg”,  2022-10-11 00:47:26+00:00 )
 
-** 6. Use case:** View the products having discounts in Sam’s Club 
+**6. Use case:** View the products having discounts in Sam’s Club 
 Description: The system must be able to display all products having having discounts in Sam’s Club
 Actors: User
 Precondition: Every tweet should be unique
