@@ -236,14 +236,22 @@ ALTER TABLE samsclub_tweet_url ADD CONSTRAINT tweet_id_fk9 FOREIGN KEY (tweet_id
 **Use Cases with SQL Queries and Relational Algebra Depiction:**
 
 **1. Use Case:** Get all the users who have tweeted regarding Walmart Deals
+
 Description: View all the Twitter users who have tweeted regarding Walmart Black Friday Deals
+
 Actor: Walmart Admin
+
 Precondition: The user must have a Twitter account
+
 Steps:
 Actor action: Search for tags such as #BlackFriday #Walmart
+
 System Responses: Retrieves all the tweets that match the tags used. Get the user name who has tweeted the tweets. The use case ends.
+
 Post Condition: Users retrieved successfully.
+
 Alternate Path: Searches with wrong hashtags and keywords
+
 Error: Gets incorrect and irrelevant tweets.
 
 **Relational Algebra Equation:**
