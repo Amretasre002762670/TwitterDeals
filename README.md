@@ -41,7 +41,6 @@ CREATE TABLE twitter_users(
 ```
 **Walmart Tweets Table**
 ```sql
-```
 CREATE TABLE walmart_tweets(
     tweet_id BIGINT(20),
     tweet_text TEXT,
@@ -53,34 +52,38 @@ CREATE TABLE walmart_tweets(
     PRIMARY KEY  (tweet_id)
 );
 
+```
+
 **Walmart Tweet URL table**
 ```sql
-```
 CREATE TABLE walmart_tweet_url(
     tweet_id BIGINT(20),
     tweet_url TEXT,
 );
+```
+
 
 
 **Walmart tweet mention table**
 ```sql
-```
 CREATE TABLE walmart_tweet_mentions(
     tweet_id BIGINT(20),
     source_user TEXT,
 );
+```
+
 
 **Walmart tweet tag table**
 ```sql
-```
 CREATE TABLE walmart_tweet_tag(
     tweet_id BIGINT(20),
     tags TEXT,
 );
+```
+
 
 **Target Tweets Table**
 ```sql
-```
 CREATE TABLE target_tweets(
     tweet_id BIGINT(20),
     tweet_text TEXT,
@@ -92,35 +95,39 @@ CREATE TABLE target_tweets(
     PRIMARY KEY  (tweet_id)
 
 );
+```
+
 
 **Target Tweet URL table**
 ```sql
-```
 CREATE TABLE target_tweet_url(
     tweet_id BIGINT(20),
     tweet_url TEXT,
 );
+```
+
 
 
 **Target tweet mention table**
 ```sql
-```
 CREATE TABLE target_tweet_mentions(
     tweet_id BIGINT(20),
     source_user TEXT,
 );
+```
+
 
 **Target tweet tag table**
 ```sql
-```
 CREATE TABLE target_tweet_tag(
     tweet_id BIGINT(20),
     tags TEXT,
 );
 
+```
+
 **SamsClub Tweet Table**
 ```sql
-```
 CREATE TABLE samsclub_tweets(
     tweet_id BIGINT(20),
     tweet_text TEXT,
@@ -132,58 +139,70 @@ CREATE TABLE samsclub_tweets(
     PRIMARY KEY  (tweet_id)
 );
 
+```
+
 **SamsClub Tweet url table**
 ```sql
-```
 CREATE TABLE samsclub_tweet_url(
     tweet_id BIGINT(20),
     tweet_url TEXT,
 );
+```
+
 
 **SamsClub tweet mention table**
 ```sql
-```
 CREATE TABLE samsclub_tweet_mentions(
     tweet_id BIGINT(20),
     source_user TEXT,
 );
+```
+
 
 **SamsClub tweet tag table**
 ```sql
-```
 CREATE TABLE samsclub_tweet_tag(
     tweet_id BIGINT(20),
     tags TEXT,
 );
+```
+
 
 **2. Queries to Add Constraints to the Tables:**
 
 **Adding Primary Keys:**
 ```sql
-```
 ALTER TABLE twitterdeals.walmart_tweets ADD PRIMARY KEY(tweet_id); 
 ALTER TABLE target_tweets ADD PRIMARY KEY(tweet_id);
 ALTER TABLE samsclub_tweets ADD PRIMARY KEY(tweet_id);
+```
+
 
 **Adding Foreign Keys:**
 ```sql
-```
 ALTER TABLE twitterdeals.walmart_tweets ADD CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES twitterdeals.twitter_users(user_id) ON DELETE NO ACTION ON UPDATE NO ACTION; 
-```sql
 ```
+
+```sql
 ALTER TABLE twitterdeals.walmart_tweet_tag ADD CONSTRAINT tweet_id_fk FOREIGN KEY (tweet_id) REFERENCES twitterdeals.walmart_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-```sql
 ```
+
+```sql
 ALTER TABLE twitterdeals.walmart_tweet_mentions ADD CONSTRAINT tweet_id_fk2 FOREIGN KEY (tweet_id) REFERENCES twitterdeals.walmart_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-```sql
 ```
+
+```sql
 ALTER TABLE twitterdeals.walmart_tweet_url ADD CONSTRAINT tweet_id_fk3 FOREIGN KEY (tweet_id) REFERENCES twitterdeals.walmart_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-```sql
+
 ```
+```sql
 ALTER TABLE target_tweets ADD CONSTRAINT user_id_fk2 FOREIGN KEY (user_id) REFERENCES twitter_users(user_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-```sql
 ```
-ALTER TABLE target_tweet_tag ADD CONSTRAINT tweet_id_fk4 FOREIGN KEY (tweet_id) REFERENCES target_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;        
+
+```sql
+ALTER TABLE target_tweet_tag ADD CONSTRAINT tweet_id_fk4 FOREIGN KEY (tweet_id) REFERENCES target_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;      
+```
+  
 ```sql
 ```
 ALTER TABLE target_tweet_mentions ADD CONSTRAINT tweet_id_fk5 FOREIGN KEY (tweet_id) REFERENCES target_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;   
@@ -197,11 +216,13 @@ ALTER TABLE samsclub_tweets ADD CONSTRAINT user_id_fk3 FOREIGN KEY (user_id) REF
 ```
 ALTER TABLE samsclub_tweet_tag ADD CONSTRAINT tweet_id_fk7 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ```sql
-```
 ALTER TABLE samsclub_tweet_mentions ADD CONSTRAINT tweet_id_fk8 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ```sql
 ```
+
 ALTER TABLE samsclub_tweet_url ADD CONSTRAINT tweet_id_fk9 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+```
+
 
 
 **Use Cases with SQL Queries and Relational Algebra Depiction:**
@@ -222,10 +243,11 @@ Error: Gets incorrect and irrelevant tweets.
 
 **SQL Query:**
 ```sql
-```
 SELECT t.tweet_id, t.user_id, u.user_name
 FROM Walmart_tweets t, twitter_users u
 WHERE t.user_id = u.user_id;
+```
+
 
 **2. Use Case:** Get all the URLs mentioned in Walmart Deals tweets
 Description: View all the URLs mentioned in the tweets regarding Walmart Black Friday Deals
