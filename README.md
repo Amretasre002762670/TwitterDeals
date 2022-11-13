@@ -11,7 +11,7 @@ Dharma Thanishq Nimmala.
 
 This database contains tweets tweeted by users for deals offered by various retailers such as Walmart, Target, and Sam’s Club. Tweets have been scrapped from Twitter based on hashtags and keywords related to Black Friday and Thanksgiving deals for specific retailers. The tables have been split into user Twitter details and tweet details. Each tweet will have a unique tweet id, similarly, each user will have a unique user id. The tables have been designed concerning these ids. The URLs, Hashtags, and Mentions in each tweet have been added to different tables for each retailer.
 
-**Conceptual Model:**
+**UML:**
 
 ![twitter UML](https://user-images.githubusercontent.com/114887817/201502663-478879e7-f004-44d1-be37-b17eae4dfd16.jpeg)
 
