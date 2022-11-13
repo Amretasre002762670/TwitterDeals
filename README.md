@@ -247,7 +247,7 @@ Alternate Path: Searches with wrong hashtags and keywords
 Error: Gets incorrect and irrelevant tweets.
 
 **Relational Algebra Equation:**
-σt.user_id=u.user_id(Πt.tweet_id, t.user_id, u.user_name) (walmart_tweets t, twitter_users u))
+σ<sub>t.user_id</sub>=<sub>u.user_id</sub>(Π(<sub>t.tweet_id, t.user_id, u.user_name</sub>) (walmart_tweets t, twitter_users u))
 
 **SQL Query:**
 ```sql
