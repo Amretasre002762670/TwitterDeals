@@ -255,7 +255,7 @@ Alternate Path: Searches with wrong hashtags and keywords
 Error: Gets incorrect and irrelevant tweets.
 
 **Relational Algebra Equation:**
-σ<sub>t.user_id</sub>=<sub>u.user_id</sub>(Π(<sub>t.tweet_id, t.user_id, u.user_name</sub>) (walmart_tweets t, twitter_users u))
+σ<sub>t.user_id=u.user_id</sub>(Π(<sub>t.tweet_id, t.user_id, u.user_name</sub>) (walmart_tweets t, twitter_users u))
 
 **SQL Query:**
 ```sql
@@ -285,7 +285,7 @@ Alternate Path: Gets no tweet with URLs due to wrong search of keywords
 Error: Gets no URLs mentioned in tweets.
 
 **Relational Algebra Equation:**
-(Πtweet_url (walmart_tweets))
+(Π<sub>tweet_url</sub> (walmart_tweets))
 
 **SQL Query:**
 ```sql
@@ -312,7 +312,7 @@ Alternate Path: Gets no tweets.
 Error: Get no tweets for the given hashtags.
 
 **Relational Algebra Equation:**
-𝜎t.user_id=u.user_id(Π.user_name, t.tweet_text (walmart_tweets t, twitter_users u))
+𝜎<sub>t.user_id=u.user_id</sub>(Π<sub>user_name, t.tweet_text</sub>(walmart_tweets t, twitter_users u))
 
 **SQL Query:**
 ```sql
@@ -380,7 +380,7 @@ VALUES (458796966949029616, 1579936718937006082, “Amretasre_RT_15”, 0, 0, �
 
 ```
 
-** 6. Use case:** View the products having discounts in Sam’s Club 
+**6. Use case:** View the products having discounts in Sam’s Club 
 
 Description: The system must be able to display all products having having discounts in Sam’s Club
 
@@ -398,7 +398,7 @@ Alternate Path: There are no discounts offered by Sam’s club.
 Error: There are no discounts
 
 **Relational Algebra Equation:**
-σt.user_id=u.user_id(Π.user_name, t.tweet_text (samsclub_tweets t, twitter_users u))
+σ<sub>t.user_id=u.user_id</sub>(Π<sub>user_name, t.tweet_text</sub> (samsclub_tweets t, twitter_users u))
 
 **SQL QUERY**
 ```sql
@@ -431,7 +431,7 @@ Alternate Path: There are no hashtags for the deals in Target.
 Error: There are no deals
 
 **Relational Algebra Equation:**
-(Πtags (target_tweets))
+(Π<sub>tags</sub>(target_tweets))
 
 **SQL QUERY:**
 ```sql
@@ -462,7 +462,7 @@ Alternate path: Gets no list
 Error: No user has more than 10k followers
 
 **Relational Algebra Equation:**
-σ follower_count>10000 (∏COUNT(user_id)(twitter_users))
+σ<sub>follower_count>10000</sub>(∏<sub>COUNT(user_id)<sub>twitter_users))
 
 **SQL QUERY**
 ```sql
@@ -495,8 +495,7 @@ Alternate path: Tweets not present
 
 Error: No URL found
 
-**Relational Algebra Equation: **
- (∏w.tweet_url,t.tweet_url,s.tweet_url(walmart_tweets w, target_tweets t, samsclub_tweets s))
+**Relational Algebra Equation:** (∏<sub>w.tweet_url,t.tweet_url,s.tweet_url</sub>(walmart_tweets w, target_tweets t, samsclub_tweets s))
 
 **SQL Query**
 ```sql
@@ -528,7 +527,7 @@ Alternate path: Tweet does not have BlackFriday
 Error: Nor URL found
 
 **Relational Algebra Equation:**
-σ(w.tweet_url LIKE ‘%BlackFriday%’) OR (t.tweet_url LIKE ‘%BlackFriday%’) OR (s.tweet_url LIKE ‘%BlackFriday%’)( (∏w.tweet_url,t.tweet_url,s.tweet_url(walmart_tweets w,
+σ<sub>(w.tweet_url LIKE ‘%BlackFriday%’) OR (t.tweet_url LIKE ‘%BlackFriday%’) OR (s.tweet_url LIKE ‘%BlackFriday%’)</sub>( (∏<sub>w.tweet_url,t.tweet_url,s.tweet_url</sub>(walmart_tweets w,
 target_tweets t, samsclub_tweets s)))
 
 **SQL Query:**
@@ -559,7 +558,7 @@ Alternate path: There were no retweets less than 10
 Error: There were no tweets
 
 **Relational Algebra Expressions -** 
-𝛔retweet_count>10(ΠCOUNT(user_id) (twitterdeals.target_tweets))
+𝛔<sub>retweet_count>10</sub>(Π<sub>COUNT(user_id)</sub>(twitterdeals.target_tweets))
 
 
 **SQL Query:**
@@ -590,7 +589,7 @@ Alternate path: There were no users tagged in the tweets related to Walmart
 Error: There were no
 
 **Relational Algebra Expressions:** 
-ΠDISTINCT source_user  (twitterdeals.target_tweets))
+Π<sub>source_user</sub>(twitterdeals.target_tweets))
 
 **SQL Query:**
 ```sql
@@ -619,7 +618,7 @@ Alternate path: There were no tweets having more than 50 likes
 Error: There were no tweets
 
 **Relational Algebra:** 
-𝛔favorite_count > 50 (Πtweet_text (twitterdeals.walmart_tweets))
+𝛔<sub>favorite_count > 50</sub> (Π<sub>tweet_text</sub>(twitterdeals.walmart_tweets))
 
 **SQL Query:**
 ```sql
@@ -650,7 +649,7 @@ Alternate path: User having user_id  '4161180381' has not tweeted anything relat
 Error: No tweets found.
 
 **Relational Algebra:** 
-𝛔 t.tweet_id=tw.tweet_id and t.user_id = 4161180381(Πt.tweet_text, t.created_at, tw.tweet_url ( twitterdeals.target_tweets t, twitterdeals.target_tweet_url tw)
+𝛔<sub>t.tweet_id=tw.tweet_id and t.user_id = 4161180381</sub>(Π<sub>t.tweet_text, t.created_at, tw.tweet_url</sub>(twitterdeals.target_tweets t, twitterdeals.target_tweet_url tw)
 
 
 **SQL Query:** 
@@ -681,7 +680,7 @@ Alternate path: SamsClub did not post any tweet in the last 24 hours
 Error: No tweet found
 
 **Relational Algebra:** 
-𝛔 tweet_date = CURDATE()(Π tweet_text(twitterdeals.samsclub_tweets)
+𝛔<sub>tweet_date = CURDATE()</sub>(Π<sub>tweet_text</sub>(twitterdeals.samsclub_tweets)
 
  **SQL query:**
  ```sql
@@ -711,7 +710,7 @@ Post condition: System displays the count of users
 Error: No tweets on 10 Nov 2022
 
 **Relational Algebra:** 
-𝛔 t.created_at=CURDATE() AND w.created_at=CURDATE() AND s.created_at=CURDATE()(Π COUNT(t.user_id), COUNT(w.user_id), COUNT(s.user_id)(target_tweets t, walmart_tweets w,samsclub_tweets s)
+𝛔<sub>t.created_at=CURDATE() AND w.created_at=CURDATE() AND s.created_at=CURDATE()</sub>(Π<sub>COUNT(t.user_id), COUNT(w.user_id), COUNT(s.user_id)</sub>(target_tweets t, walmart_tweets w,samsclub_tweets s)
 
 **SQL QUERY:**
 ```sql
@@ -741,7 +740,7 @@ Alternate path: There are no tweets related to SamsClub and Target
 Error: Tweets not found
 
 **Relational Algebra:**
-(Π * (twitterdeals.samsclub_tweets)) ∪ (Π * (twitterdeals.target_tweets))
+(Π<sub>*</sub>(twitterdeals.samsclub_tweets)) ∪ (Π<sub>*</sub>(twitterdeals.target_tweets))
 
 **SQL Query:** 
 ```sql
@@ -770,7 +769,7 @@ Alternate Path: There were no tweets by user from  5 November 2022 to 10 Novembe
 Error: There are no tweets.
 
 **Relational Algebra:** 
-𝛔tweet_date between 2022-11-09 and 2022-11-11(Π(twitterdeals.samsclub_tweets)
+𝛔<sub>tweet_date between 2022-11-09 and 2022-11-11</sub>(Π<sub>*</sub>(twitterdeals.samsclub_tweets)
 
 **SQl Query:**
 ```sql
@@ -801,13 +800,13 @@ Error: Will not appear when another user searches with keywords.
 ```sql
 INSERT INTO SamsClub_tweets (tweet_id, tweet_text, favorite_count, retweet_count, tweet, user_id)
 VALUES (12312239669900775349, “Fresh Fruits and Vegetables Special Thanksgiving Discount on min 5lbs”, #Discount.”, “2022-11-12 00:24:41+00:00”, 0, 0, “Target#20%OFF#Discount#Deals”, 2313458937445567);
-```
+
 
 
 INSERT INTO twitter_users (tweet_id, user_id, user_name, follower_count,
 friend_count, user_profile_image, user_created_at)
 VALUES (12312239669900775349, 2313458937445567, “RitaSamsClub”, 0, 0, “https://pbs.twimg.com/profile_images/2313458937445567/HQg--2xw_400x400.jpg”,  2012-10-07 00:22:56+00:00 )
-
+```
 
 **20. Use Case:** View all the tweets tags related to SamsClub on 6 Nov 2022.
 
@@ -829,7 +828,7 @@ Alternate path: There are no tweets related to  SamsClub
 Error: Tweets not found
 
 **Relational Algebra:** 
-𝛔 st.tweet_id = s.tweet_id AND s.tweet_date = 2022-11-06(Π st.tags, st.tweet_id(twitterdeals.samsclub_tweet_tag st, 
+𝛔<sub>st.tweet_id = s.tweet_id AND s.tweet_date = 2022-11-06</sub>(Π<sub>st.tags, st.tweet_id</sub>(twitterdeals.samsclub_tweet_tag st, 
     twitterdeals.samsclub_tweets s)
 
 
