@@ -222,12 +222,14 @@ ALTER TABLE samsclub_tweet_tag ADD CONSTRAINT tweet_id_fk7 FOREIGN KEY (tweet_id
 
 ```sql
 ALTER TABLE samsclub_tweet_mentions ADD CONSTRAINT tweet_id_fk8 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+```
+
+
 ```sql
 ALTER TABLE samsclub_tweet_url ADD CONSTRAINT tweet_id_fk9 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ```
 
-
-```
 
 
 
