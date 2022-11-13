@@ -204,23 +204,29 @@ ALTER TABLE target_tweet_tag ADD CONSTRAINT tweet_id_fk4 FOREIGN KEY (tweet_id) 
 ```
   
 ```sql
+ALTER TABLE target_tweet_mentions ADD CONSTRAINT tweet_id_fk5 FOREIGN KEY (tweet_id) REFERENCES target_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 ```
-ALTER TABLE target_tweet_mentions ADD CONSTRAINT tweet_id_fk5 FOREIGN KEY (tweet_id) REFERENCES target_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;   
+   
 ```sql
-```
 ALTER TABLE target_tweet_url ADD CONSTRAINT tweet_id_fk6 FOREIGN KEY (tweet_id) REFERENCES target_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-```sql
 ```
+
+```sql
 ALTER TABLE samsclub_tweets ADD CONSTRAINT user_id_fk3 FOREIGN KEY (user_id) REFERENCES twitter_users(user_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
-```sql
 ```
+
+```sql
 ALTER TABLE samsclub_tweet_tag ADD CONSTRAINT tweet_id_fk7 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+```
+
 ```sql
 ALTER TABLE samsclub_tweet_mentions ADD CONSTRAINT tweet_id_fk8 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ```sql
+ALTER TABLE samsclub_tweet_url ADD CONSTRAINT tweet_id_fk9 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ```
 
-ALTER TABLE samsclub_tweet_url ADD CONSTRAINT tweet_id_fk9 FOREIGN KEY (tweet_id) REFERENCES samsclub_tweets (tweet_id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 ```
 
 
@@ -265,9 +271,10 @@ Error: Gets no URLs mentioned in tweets.
 
 **SQL Query:**
 ```sql
-```
 SELECT tweet_url
 FROM Walmart_tweet_url;
+```
+
 
 
 **3. Use Case:** Get all the text in tweets that mentioned about Walmart Black Friday Deals 
@@ -286,10 +293,11 @@ Error: Get no tweets for the given hashtags.
 
 **SQL Query:**
 ```sql
-```
 SELECT u.user_name, t.tweet_text
 FROM twitter_users u, walmart_tweets t
 WHERE t.user_id = u.user_id;
+```
+
 
 **4. Use Case:** Get the top 10 tweets regarding Black Friday sales in Walmart
 Description: View all the recently tweeted tweets regarding Walmart’s Deals.
@@ -306,11 +314,12 @@ Error: Get no tweets that were made within the present day.
 
 **SQL Query:**
 ```sql
-```
 SELECT tweet_text, created_at
 FROM walmart_tweets
 ORDER BY created_at DESC
 LIMIT 10;
+```
+
 
 **5. Use Case:** Tweet regarding the deals given for laptops.
 Description: The user tweets regarding the deals offered by Walmart for Laptops
