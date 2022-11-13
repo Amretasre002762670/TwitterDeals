@@ -20,7 +20,10 @@ This database contains tweets tweeted by users for deals offered by various reta
 
 **1. Queries to Create Tables:**
 
+```sql
 CREATE DATABASE twitterdeals
+```
+
 
 **User Table**
 
