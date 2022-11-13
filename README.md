@@ -17,11 +17,13 @@ This database contains tweets tweeted by users for deals offered by various reta
 
 
 **Physical Model:**
- **
-1. Queries to Create Tables:** 
+
+**1. Queries to Create Tables:**
 
 CREATE DATABASE twitterdeals
-User Table
+
+**User Table**
+
 CREATE TABLE twitter_users(
     user_id BIGINT(20),
     user_name TEXT,
@@ -34,7 +36,8 @@ CREATE TABLE twitter_users(
     PRIMARY KEY  (user_id )
 );
 
-Walmart Tweets Table
+**Walmart Tweets Table**
+
 CREATE TABLE walmart_tweets(
     tweet_id BIGINT(20),
     tweet_text TEXT,
@@ -46,26 +49,30 @@ CREATE TABLE walmart_tweets(
     PRIMARY KEY  (tweet_id)
 );
 
-Walmart Tweet URL table
+**Walmart Tweet URL table**
+
 CREATE TABLE walmart_tweet_url(
     tweet_id BIGINT(20),
     tweet_url TEXT,
 );
 
 
-Walmart tweet mention table
+**Walmart tweet mention table**
+
 CREATE TABLE walmart_tweet_mentions(
     tweet_id BIGINT(20),
     source_user TEXT,
 );
 
-Walmart tweet tag table
+**Walmart tweet tag table**
+
 CREATE TABLE walmart_tweet_tag(
     tweet_id BIGINT(20),
     tags TEXT,
 );
 
-Target Tweets Table
+**Target Tweets Table**
+
 CREATE TABLE target_tweets(
     tweet_id BIGINT(20),
     tweet_text TEXT,
@@ -78,26 +85,30 @@ CREATE TABLE target_tweets(
 
 );
 
-Target Tweet URL table
+**Target Tweet URL table**
+
 CREATE TABLE target_tweet_url(
     tweet_id BIGINT(20),
     tweet_url TEXT,
 );
 
 
-Target tweet mention table
+**Target tweet mention table**
+
 CREATE TABLE target_tweet_mentions(
     tweet_id BIGINT(20),
     source_user TEXT,
 );
 
-Target tweet tag table
+**Target tweet tag table**
+
 CREATE TABLE target_tweet_tag(
     tweet_id BIGINT(20),
     tags TEXT,
 );
 
-SamsClub Tweet Table
+**SamsClub Tweet Table**
+
 CREATE TABLE samsclub_tweets(
     tweet_id BIGINT(20),
     tweet_text TEXT,
@@ -109,25 +120,28 @@ CREATE TABLE samsclub_tweets(
     PRIMARY KEY  (tweet_id)
 );
 
-SamsClub Tweet url table
+**SamsClub Tweet url table**
+
 CREATE TABLE samsclub_tweet_url(
     tweet_id BIGINT(20),
     tweet_url TEXT,
 );
 
-SamsClub tweet mention table
+**SamsClub tweet mention table**
+
 CREATE TABLE samsclub_tweet_mentions(
     tweet_id BIGINT(20),
     source_user TEXT,
 );
 
-SamsClub tweet tag table
+**SamsClub tweet tag table**
+
 CREATE TABLE samsclub_tweet_tag(
     tweet_id BIGINT(20),
     tags TEXT,
 );
 
-**2. Queries to Add Constraints to the Tables: **
+**2. Queries to Add Constraints to the Tables:**
 
 **Adding Primary Keys:**
 
